@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\MD4.cpp" />
+    <ClCompile Include="..\MD5.cpp" />
+    <ClCompile Include="..\SHA1.cpp" />
+    <ClCompile Include="..\CRC32.cpp" />
+    <ClCompile Include="..\Hash_Context.cpp" />
+    <ClCompile Include="..\Hasher.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\MD4.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MD5.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHA1.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CRC32.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Hash_Context.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Hasher.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Utility.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\asm\masm\crc32x64.asm">
+      <Filter>asm\masm</Filter>
+    </None>
+    <None Include="..\asm\masm\crc32x86.asm">
+      <Filter>asm\masm</Filter>
+    </None>
+    <None Include="..\asm\masm\MD4x64.asm">
+      <Filter>asm\masm</Filter>
+    </None>
+    <None Include="..\asm\masm\MD4x86.asm">
+      <Filter>asm\masm</Filter>
+    </None>
+    <None Include="..\asm\masm\MD5x64.asm">
+      <Filter>asm\masm</Filter>
+    </None>
+    <None Include="..\asm\masm\MD5x86.asm">
+      <Filter>asm\masm</Filter>
+    </None>
+    <None Include="..\asm\masm\SHA1x86.asm">
+      <Filter>asm\masm</Filter>
+    </None>
+    <None Include="..\asm\masm\SHA1x64.asm">
+      <Filter>asm\masm</Filter>
+    </None>
+    <None Include="..\asm\nasm\crc32x64.asm">
+      <Filter>asm\nasm</Filter>
+    </None>
+    <None Include="..\asm\nasm\crc32x86.asm">
+      <Filter>asm\nasm</Filter>
+    </None>
+    <None Include="..\asm\nasm\MD4x64.asm">
+      <Filter>asm\nasm</Filter>
+    </None>
+    <None Include="..\asm\nasm\MD4x86.asm">
+      <Filter>asm\nasm</Filter>
+    </None>
+    <None Include="..\asm\nasm\MD5x64.asm">
+      <Filter>asm\nasm</Filter>
+    </None>
+    <None Include="..\asm\nasm\MD5x86.asm">
+      <Filter>asm\nasm</Filter>
+    </None>
+    <None Include="..\asm\nasm\SHA1x64.asm">
+      <Filter>asm\nasm</Filter>
+    </None>
+    <None Include="..\asm\nasm\SHA1x86.asm">
+      <Filter>asm\nasm</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{af586946-d0ea-423a-ae66-c142175cab9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="asm">
+      <UniqueIdentifier>{9fc22993-c8c4-4fc1-8392-1d513cf69575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="asm\masm">
+      <UniqueIdentifier>{b487ad99-beb2-49cf-b6fa-a64a7fe5ca71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="asm\nasm">
+      <UniqueIdentifier>{d6e950fc-8526-4345-8e0b-db61b409c092}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
