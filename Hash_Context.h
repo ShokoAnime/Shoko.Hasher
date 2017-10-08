@@ -15,14 +15,14 @@
 class Hash_Context
 {
 public:
-	CMD4 *MD4 = NULL;
-    CMD5 *MD5 = NULL;
-	CSHA1 *SHA1 = NULL;
-	CCRC32 *CRC32 = NULL;
+	CMD4 *MD4 = nullptr;
+	CMD5 *MD5 = nullptr;
+	CSHA1 *SHA1 = nullptr;
+	CCRC32 *CRC32 = nullptr;
 	int Types=0;
 	long Filesize=0;
 	long Position=0;
-	unsigned char *ED2K_Buffer=NULL;
+	unsigned char *ED2K_Buffer=nullptr;
 	Hash_Context(int types, long filesize);
 	~Hash_Context();
 

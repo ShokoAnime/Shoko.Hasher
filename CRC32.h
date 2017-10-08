@@ -1,7 +1,6 @@
 #pragma once
 
-
-
+#include "interop.h"
 #include "Utility.h"
 
 class CCRC32

@@ -1,5 +1,10 @@
 #include "MD4.h"
 #include <algorithm>
+#ifdef __linux__
+	#include <cstring>
+#else
+	#define memcpy(x, y, z) std::memcpy(x, y, z)
+#endif
 
 
 
@@ -67,10 +72,10 @@ void CMD4::Add(const void* pData, std::size_t nLength)
 			// before doing the rest of the transformation on the original data
 			if (index + nLength < m_State.blockSize)
 			{
-				std::memcpy(m_State.m_oBuffer + index, input, nLength);
+				memcpy(m_State.m_oBuffer + index, input, nLength);
 				return;
 			}
-			std::memcpy(m_State.m_oBuffer + index, input, m_State.blockSize - index);
+			memcpy(m_State.m_oBuffer + index, input, m_State.blockSize - index);
 			nLength -= m_State.blockSize - index;
 			input += m_State.blockSize - index;
 			MD4_x64(&(m_State.m_nState[0]), m_State.m_oBuffer, 1);
@@ -85,7 +90,7 @@ void CMD4::Add(const void* pData, std::size_t nLength)
 	nLength %= m_State.blockSize;
 	// Buffer remaining input
 	if (nLength)
-		std::memcpy(m_State.m_oBuffer, input, nLength);
+		memcpy(m_State.m_oBuffer, input, nLength);
 #else
 	MD4_Add_p5(&m_State, pData, nLength);
 #endif
@@ -219,10 +224,10 @@ void CMD4::Add(const void* pData, std::size_t nLength)
 			// before doing the rest of the transformation on the original data
 			if (index + nLength < m_State.blockSize)
 			{
-				std::memcpy(m_State.m_oBuffer + index, input, nLength);
+				memcpy(m_State.m_oBuffer + index, input, nLength);
 				return;
 			}
-			std::memcpy(m_State.m_oBuffer + index, input, m_State.blockSize - index);
+			memcpy(m_State.m_oBuffer + index, input, m_State.blockSize - index);
 			nLength -= m_State.blockSize - index;
 			input += m_State.blockSize - index;
 			Transform(reinterpret_cast<const uint32*>(m_State.m_oBuffer));
@@ -235,7 +240,7 @@ void CMD4::Add(const void* pData, std::size_t nLength)
 		Transform(reinterpret_cast<const uint32*>(input));
 	// Buffer remaining input
 	if (nLength)
-		std::memcpy(m_State.m_oBuffer, input, nLength);
+		memcpy(m_State.m_oBuffer, input, nLength);
 }
 
 
