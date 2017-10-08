@@ -75,7 +75,7 @@ static uint32 arrdwCrc32Table[256] =
 };
 
 #define UPDC32(octet,crc) (arrdwCrc32Table[((crc)\
-     ^ ((uchar)octet)) & 0xff] ^ ((crc) >> 8))
+	 ^ ((uchar)octet)) & 0xff] ^ ((crc) >> 8))
 
 
 CCRC32::CCRC32()
@@ -85,7 +85,7 @@ CCRC32::CCRC32()
 
 
 void CCRC32::GetHash(__in_bcount(4) uchar* pHash) const
-{	
+{
 	std::transform(&crc_value,&(crc_value)+4, (uint32*)pHash, transformToLE<uint32>);
 }
 

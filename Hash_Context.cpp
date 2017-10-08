@@ -34,31 +34,31 @@ Hash_Context::Hash_Context(int types, long filesize)
 }
 Hash_Context::~Hash_Context()
 {
-	if (SHA1 != NULL)
+	if (SHA1 != nullptr)
 	{
 		delete SHA1;
-		SHA1 = NULL;
+		SHA1 = nullptr;
 	}
-	if (MD5 != NULL)
+	if (MD5 != nullptr)
 	{
 		delete MD5;
-		MD5 = NULL;
+		MD5 = nullptr;
 	}
-	if (CRC32 != NULL)
+	if (CRC32 != nullptr)
 	{
 		delete CRC32;
-		CRC32 = NULL;
+		CRC32 = nullptr;
 	}
 
-	if (ED2K_Buffer != NULL)
+	if (ED2K_Buffer != nullptr)
 	{
 		free(ED2K_Buffer);
-		ED2K_Buffer = NULL;
+		ED2K_Buffer = nullptr;
 	}
-	if (MD4!=NULL)
+	if (MD4!=nullptr)
 	{
 		delete MD4;
-		MD4 = NULL;
+		MD4 = nullptr;
 	}
 }
 

@@ -22,6 +22,7 @@
 #pragma once
 
 #include "Utility.h"
+#include "interop.h"
 
 class CMD4
 {

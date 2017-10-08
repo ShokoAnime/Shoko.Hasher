@@ -2,16 +2,19 @@
 
 #include "Hasher.h"
 #include "Hash_Context.h"
-#include <cstring>
+#if defined(__linux__)
+	#include <string.h>
+#else
+	#include <cstring>
+#endif
 
 
 
-
-extern "C" __declspec(dllexport) void *Init(int hashtypes, long filesize)
+extern "C" EXPORT void *Init(int hashtypes, long filesize)
 {
 	return new Hash_Context(hashtypes, filesize);
 }
-extern "C" __declspec(dllexport) void Update(void *context, unsigned char *buffer, long size)
+extern "C" EXPORT void Update(void *context, unsigned char *buffer, long size)
 {
 	Hash_Context *h = (Hash_Context *)context;
 	int current_md4 = h->Position / ED2K_CHUNK_SIZE;
@@ -50,7 +53,7 @@ extern "C" __declspec(dllexport) void Update(void *context, unsigned char *buffe
 		}
 	}
 }
-extern "C" __declspec(dllexport) void Finish(void *context, unsigned char *hashes)
+extern "C" EXPORT void Finish(void *context, unsigned char *hashes)
 {
 	Hash_Context *h = (Hash_Context *)context;
 	if ((h->Types&HASH_TYPE_ED2K) == HASH_TYPE_ED2K)
