@@ -1,7 +1,8 @@
+
 #if defined(_MSC_VER)
 
-	#define EXPORT __dllspec(dllexport)
-	#define IMPORT __dllspec(dllimport)
+	#define EXPORT __declspec(dllexport)
+	#define IMPORT __declspec(dllimport)
 
 #elif defined(__GNUC__)
 

@@ -2,11 +2,7 @@
 // MD5.cpp
 #include "SHA1.h"
 #include <algorithm>
-#ifdef __linux__
-	#include <cstring>
-#else
-	#define memcpy(x, y, z) std::memcpy(x, y, z)
-#endif
+#include <cstring>
 
 const unsigned char hashPadding[64] = {
 	0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

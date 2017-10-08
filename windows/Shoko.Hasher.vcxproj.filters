@@ -30,6 +30,9 @@
     <ClInclude Include="..\Utility.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\interop.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\asm\masm\crc32x64.asm">

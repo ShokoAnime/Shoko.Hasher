@@ -2,11 +2,8 @@
 
 #include "Hasher.h"
 #include "Hash_Context.h"
-#if defined(__linux__)
-	#include <string.h>
-#else
-	#include <cstring>
-#endif
+#include <string.h>
+
 
 
 

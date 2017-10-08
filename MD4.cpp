@@ -1,10 +1,6 @@
 #include "MD4.h"
 #include <algorithm>
-#ifdef __linux__
-	#include <cstring>
-#else
-	#define memcpy(x, y, z) std::memcpy(x, y, z)
-#endif
+#include <cstring>
 
 
 
