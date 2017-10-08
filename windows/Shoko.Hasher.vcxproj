@@ -353,6 +353,7 @@ ml.exe ..\asm\masm\crc32x86.asm /c /Cx /coff</Command>
     <ClInclude Include="..\CRC32.h" />
     <ClInclude Include="..\Hash_Context.h" />
     <ClInclude Include="..\Utility.h" />
+    <ClInclude Include="..\interop.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\asm\masm\crc32x86.asm" />
