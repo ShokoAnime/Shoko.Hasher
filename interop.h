@@ -24,7 +24,7 @@
 	#define __forceinline __attribute__((always_inline))
 	#define __in_bcount(size)
 	
-	#define __fastcall __attribute__((fastcall))
+	#define __fastcall __attribute__((ms_abi))
 
 	#include <byteswap.h>
 	#define _byteswap_uint64(x) bswap_64(x)
