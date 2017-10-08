@@ -25,8 +25,6 @@ extern "C" __declspec(dllexport) void Update(void *context, unsigned char *buffe
 			continue;
 		if ((h->Types&HASH_TYPE_ED2K) == HASH_TYPE_ED2K)
 		{
-			if ((h->Position % ED2K_CHUNK_SIZE) == 0)
-				h->MD4->Reset();
 			h->MD4->Add(buffer, init_size);
 		}
 		if ((h->Types&HASH_TYPE_CRC32) == HASH_TYPE_CRC32)
@@ -48,13 +46,13 @@ extern "C" __declspec(dllexport) void Update(void *context, unsigned char *buffe
 		{
 			h->MD4->Finish();
 			h->MD4->GetHash(&h->ED2K_Buffer[md4*16]);
+			h->MD4->Reset();
 		}
 	}
 }
 extern "C" __declspec(dllexport) void Finish(void *context, unsigned char *hashes)
 {
 	Hash_Context *h = (Hash_Context *)context;
-	int position = 0;
 	if ((h->Types&HASH_TYPE_ED2K) == HASH_TYPE_ED2K)
 	{
 		int md4 = h->Position / ED2K_CHUNK_SIZE;
@@ -76,25 +74,25 @@ extern "C" __declspec(dllexport) void Finish(void *context, unsigned char *hashe
 		{
 			memcpy(h->ED2K_Buffer, hashes, 16);
 		}
-		position += 16;
+		hashes += 16;
 	}
 	if ((h->Types&HASH_TYPE_CRC32) == HASH_TYPE_CRC32)
 	{
 		h->CRC32->Finish();
-		h->CRC32->GetHash(hashes+position);
-		position += 4;
+		h->CRC32->GetHash(hashes);
+		hashes += 4;
 	}
 	if ((h->Types&HASH_TYPE_MD5)==HASH_TYPE_MD5)
 	{
 		h->MD5->Finish();
-		h->MD5->GetHash(hashes + position);
-		position += 16;
+		h->MD5->GetHash(hashes);
+		hashes += 16;
 	}
 	if ((h->Types&HASH_TYPE_SHA1)== HASH_TYPE_SHA1)
 	{
 		h->SHA1->Finish();
-		h->SHA1->GetHash(hashes + position);
-		position += 20;
+		h->SHA1->GetHash(hashes);
+		hashes += 20;
 	}
 	delete h;
 }
