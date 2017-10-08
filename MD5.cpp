@@ -73,13 +73,17 @@ void CMD5::Add(const void* pData, std::size_t nLength)
 			MD5_x64(&(m_State.m_nState[0]), m_State.m_oBuffer, 1);
 		}
 	}
-	// Transform as many times as possible using the original data stream
-	const char* const end = input + nLength - nLength % m_State.blockSize;
-	size_t abs = nLength / m_State.blockSize;
-	MD5_x64(&(m_State.m_nState[0]), input, abs);
-	abs *= m_State.blockSize;
-	input += abs;
-	nLength %= m_State.blockSize;
+	if (nLength >= m_State.blockSize)
+	{
+
+		// Transform as many times as possible using the original data stream
+		const char* const end = input + nLength - nLength % m_State.blockSize;
+		size_t abs = nLength / m_State.blockSize;
+		MD5_x64(&(m_State.m_nState[0]), input, abs);
+		abs *= m_State.blockSize;
+		input += abs;
+		nLength %= m_State.blockSize;
+	}
 	// Buffer remaining input
 	if (nLength)
 		memcpy(m_State.m_oBuffer, input, nLength);

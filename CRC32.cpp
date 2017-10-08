@@ -86,7 +86,10 @@ CCRC32::CCRC32()
 
 void CCRC32::GetHash(__in_bcount(4) uchar* pHash) const
 {
-	std::transform(&crc_value,&(crc_value)+4, (uint32*)pHash, transformToLE<uint32>);
+	pHash[0] = crc_value >> 24;
+	pHash[1] = (crc_value >> 16) & 0xFF;
+	pHash[2] = (crc_value >> 8) & 0xFF;
+	pHash[3] = crc_value & 0xFF;
 }
 
 void CCRC32::Reset()

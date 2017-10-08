@@ -21,15 +21,15 @@ extern "C" EXPORT void Update(void *context, unsigned char *buffer, long size)
 		int init_size = ED2K_CHUNK_SIZE - (h->Position % ED2K_CHUNK_SIZE);
 		if (init_size > size)
 			init_size = size;
-		if (init_size==0)
-			continue;
+		if (init_size == 0)
+			break;
 		if ((h->Types&HASH_TYPE_ED2K) == HASH_TYPE_ED2K)
 			h->MD4->Add(buffer, init_size);
 		if ((h->Types&HASH_TYPE_CRC32) == HASH_TYPE_CRC32)
 			h->CRC32->Add(buffer, init_size);
-		if ((h->Types&HASH_TYPE_MD5)==HASH_TYPE_MD5)
+		if ((h->Types&HASH_TYPE_MD5) == HASH_TYPE_MD5)
 			h->MD5->Add(buffer, init_size);
-		if ((h->Types&HASH_TYPE_SHA1)==HASH_TYPE_SHA1)
+		if ((h->Types&HASH_TYPE_SHA1) == HASH_TYPE_SHA1)
 			h->SHA1->Add(buffer, init_size);
 		buffer += init_size;
 		h->Position += init_size;
@@ -64,7 +64,7 @@ extern "C" EXPORT void Finish(void *context, unsigned char *hashes)
 		}
 		else
 		{
-			memcpy(h->ED2K_Buffer, hashes, 16);
+			memcpy(hashes, h->ED2K_Buffer, 16);
 		}
 		hashes += 16;
 	}

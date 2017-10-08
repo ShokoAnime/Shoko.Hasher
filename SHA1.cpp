@@ -19,7 +19,7 @@ void CSHA1::GetHash(__in_bcount(20) uchar* pHash) const
 {
 	std::transform(m_State.m_nState,
 		m_State.m_nState + sizeof(m_State.m_nState) / sizeof(m_State.m_nState[0]),
-		(uint32*)pHash, transformToBE<unsigned long>);
+		(uint32*)pHash, transformToBE<uint32>);
 }
 
 void CSHA1::Reset()
@@ -73,13 +73,16 @@ void CSHA1::Add(const void* pData, std::size_t nLength)
 			sha1_block_asm_data_order(&(m_State.m_nState[0]), m_State.m_oBuffer, 1);
 		}
 	}
-	// Transform as many times as possible using the original data stream
-	const char* const end = input + nLength - nLength % m_State.blockSize;
-	size_t abs = nLength / m_State.blockSize;
-	sha1_block_asm_data_order(&(m_State.m_nState[0]), input, abs);
-	abs *= m_State.blockSize;
-	input += abs;
-	nLength %= m_State.blockSize;
+	if (nLength >= m_State.blockSize)
+	{
+		// Transform as many times as possible using the original data stream
+		const char* const end = input + nLength - nLength % m_State.blockSize;
+		size_t abs = nLength / m_State.blockSize;
+		sha1_block_asm_data_order(&(m_State.m_nState[0]), input, abs);
+		abs *= m_State.blockSize;
+		input += abs;
+		nLength %= m_State.blockSize;
+	}
 	// Buffer remaining input
 	if (nLength)
 		memcpy(m_State.m_oBuffer, input, nLength);
