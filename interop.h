@@ -17,6 +17,10 @@
 
 #endif
 
+#ifndef WIN32
+#define __stdcall
+#endif
+
 //linux interop between 
 #ifdef __linux__
 	#include <inttypes.h>
@@ -31,7 +35,6 @@
 	#define _byteswap_uint64(x) bswap_64(x)
 	#define _byteswap_ulong(x) bswap_32(x)
 	#define _byteswap_ushort(x) bswap_16(x)
-
 
 	//typedef unsigned int size_t;
 #endif
