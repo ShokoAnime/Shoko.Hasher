@@ -1,8 +1,8 @@
 section .text
 
-global _MD4_Transform_p5@0
+global _MD4_Transform_p5
 align 10h
-_MD4_Transform_p5@0:
+_MD4_Transform_p5:
    mov     esi, [esp+28h]
    mov     eax, [esi+8]
    mov     ebx, [esi+0Ch]
@@ -399,9 +399,9 @@ _MD4_Transform_p5@0:
    add     [edx+14h], ecx
    retn    
    
-global _MD4_Add_p5@12
+global _MD4_Add_p5
 align 10h
-_MD4_Add_p5@12:
+_MD4_Add_p5:
    pusha   
    mov     ecx, [esp+20h+12]
    and     ecx, ecx
@@ -423,7 +423,7 @@ full_blocks:
    sub     ecx, 40h
    jb      end_of_stream
    mov     [esp+20h+12], ecx
-   call    _MD4_Transform_p5@0
+   call    _MD4_Transform_p5
    add     ebp, 40h
    jmp     full_blocks
 end_of_stream:
@@ -448,7 +448,7 @@ loc:
    jnz     loc
    mov     [esp+20h+8], ebp
    lea     ebp, [edi+18h]
-   call    _MD4_Transform_p5@0
+   call    _MD4_Transform_p5
    mov     ebp, [esp+20h+8]
    jmp     full_blocks
 short_stream:

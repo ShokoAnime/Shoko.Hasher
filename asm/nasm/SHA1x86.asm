@@ -1,9 +1,9 @@
 section .text
 
-global _SHA_Compile_p5@0
+global _SHA_Compile_p5
 align 10h
 
-_SHA_Compile_p5@0:
+_SHA_Compile_p5:
    mov     edi, [ebp+0]
    bswap   edi
    mov     [esp+4h], edi
@@ -1330,9 +1330,9 @@ _SHA_Compile_p5@0:
 
 align 10h
 
-global _SHA1_Add_p5@12
+global _SHA1_Add_p5
 
-_SHA1_Add_p5@12:
+_SHA1_Add_p5:
    pusha   
    sub     esp, 140h
    mov     ecx, [esp+160h+0Ch]
@@ -1355,7 +1355,7 @@ full_blocks:
    sub     ecx, 40h
    jb      end_of_stream
    mov     [esp+160h+0Ch], ecx
-   call    _SHA_Compile_p5@0
+   call    _SHA_Compile_p5
    mov     ebp, [esp+160h+8h]
    add     ebp, 40h
    mov     [esp+160h+8h], ebp
@@ -1382,7 +1382,7 @@ loc:
    jnz     loc
    mov     [esp+160h+8h], ebp
    lea     ebp, [edi+1Ch]
-   call    _SHA_Compile_p5@0
+   call    _SHA_Compile_p5
    mov     ebp, [esp+160h+8h]
    jmp     full_blocks
 short_stream:
