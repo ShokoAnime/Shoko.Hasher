@@ -210,3 +210,4 @@ JMMServer/Images/Unused/
 # Jetbrains
 /.idea/
 /Shoko.Server.VC.db
+/windows/Debug_x64
